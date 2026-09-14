@@ -804,7 +804,7 @@ body.loaded .opening{animation:none}
 
             <div class="guest">
                 Kepada Yth.<br>
-                <strong>Bapak/Ibu/Saudara/i</strong>
+                <strong id="namaTamu">Bapak/Ibu/Saudara/i</strong>
             </div>
 
             <button class="btn" onclick="openInvitation()">
@@ -1608,5 +1608,17 @@ body.loaded .opening{animation:none}
 
     </script>
 
+<script>
+// Nama tamu dari URL, contoh: ?to=Galang%20Aditya
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const nama = params.get("to");
+    const namaTamu = document.getElementById("namaTamu");
+
+    if (nama && nama.trim() !== "" && namaTamu) {
+        namaTamu.textContent = nama.trim().replace(/\+/g, " ");
+    }
+});
+</script>
 </body>
 </html>
